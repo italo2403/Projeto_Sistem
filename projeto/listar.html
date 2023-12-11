@@ -1,0 +1,37 @@
+<?php
+include_once("conexao.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Identificador</th>
+            <th>Nome</th>
+            <th>email</th>
+        </tr>
+        <?php
+        $sql = "select * from usuario";
+
+        $busca = mysqli_query($conexao, $sql);
+       while ($linha = mysqli_fetch_assoc($busca)) {
+    echo "<tr>";
+    echo "<td>" . $linha['id_usu'] . "</td>";
+    echo "<td>" . $linha['email'] . "</td>";
+    echo "<td>" . $linha['nome'] . "</td>";
+    echo "</tr>";
+}
+        ?>
+    </table>
+
+    <button class="btn" onclick="window.print()">Imprimir</button>
+</body>
+</html>
+
+
